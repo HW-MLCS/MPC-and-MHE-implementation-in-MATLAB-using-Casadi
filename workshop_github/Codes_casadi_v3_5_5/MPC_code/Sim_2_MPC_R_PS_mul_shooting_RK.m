@@ -9,8 +9,8 @@ clc
 addpath('C:\Users\mehre\OneDrive\Desktop\CasADi\casadi-windows-matlabR2016a-v3.5.5')
 import casadi.*
 
-h = 0.2; %[s]
-N = 10; % prediction horizon
+h = 0.1; %[s]
+N = 50; % prediction horizon
 rob_diam = 0.3;
 
 v_max = 0.6; v_min = -v_max;
@@ -73,9 +73,9 @@ args.lbg(1:3*(N+1)) = 0;  % -1e-20  % Equality constraints
 args.ubg(1:3*(N+1)) = 0;  % 1e-20   % Equality constraints
 
 args.lbx(1:3:3*(N+1),1) = -2; %state x lower bound
-args.ubx(1:3:3*(N+1),1) = 2; %state x upper bound
+args.ubx(1:3:3*(N+1),1) = 10; %state x upper bound
 args.lbx(2:3:3*(N+1),1) = -2; %state y lower bound
-args.ubx(2:3:3*(N+1),1) = 2; %state y upper bound
+args.ubx(2:3:3*(N+1),1) = 10; %state y upper bound
 args.lbx(3:3:3*(N+1),1) = -inf; %state theta lower bound
 args.ubx(3:3:3*(N+1),1) = inf; %state theta upper bound
 
@@ -90,8 +90,8 @@ args.ubx(3*(N+1)+2:2:3*(N+1)+2*N,1) = omega_max; %omega upper bound
 % THE SIMULATION LOOP SHOULD START FROM HERE
 %-------------------------------------------
 t0 = 0;
-x0 = [0 ; 0 ; 0.0];    % initial condition.
-xs = [1.5 ; 1.5 ; 0.0]; % Reference posture.
+x0 = [6 ; 3.4 ; 1/4*pi];    % initial condition.
+xs = [2.5 ; 2.5 ; 1/2*pi]; % Reference posture.
 
 xx(:,1) = x0; % xx contains the history of states
 t(1) = t0;

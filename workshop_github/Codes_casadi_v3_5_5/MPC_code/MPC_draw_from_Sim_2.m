@@ -27,14 +27,18 @@ set(gcf,'PaperPositionMode','auto')
 set(gcf, 'Color', 'w');
 set(gcf,'Units','normalized','OuterPosition',[0 0 0.55 1]);
 
+box on
+grid on
+
 for k = 1:size(xx,2)
     h_t = 0.14; w_t=0.09; % triangle parameters
-    
     x1 = xs(1); y1 = xs(2); th1 = xs(3);
     x1_tri = [ x1+h_t*cos(th1), x1+(w_t/2)*cos((pi/2)-th1), x1-(w_t/2)*cos((pi/2)-th1)];%,x1+(h_t/3)*cos(th1)];
     y1_tri = [ y1+h_t*sin(th1), y1-(w_t/2)*sin((pi/2)-th1), y1+(w_t/2)*sin((pi/2)-th1)];%,y1+(h_t/3)*sin(th1)];
     fill(x1_tri, y1_tri, 'g'); % plot reference state
     hold on;
+
+
     x1 = xx(1,k,1); y1 = xx(2,k,1); th1 = xx(3,k,1);
     x_r_1 = [x_r_1 x1];
     y_r_1 = [y_r_1 y1];
@@ -64,13 +68,17 @@ for k = 1:size(xx,2)
     xlabel('$x$-position (m)','interpreter','latex','FontSize',fontsize_labels)
     axis([-0.5 3 -0.5 3])
     pause(0.1)
-    box on;
+    box on
     grid on
+
     %aviobj = addframe(aviobj,gcf);
     drawnow
     % for video generation
     F(k) = getframe(gcf); % to get the current frame
 end
+
+box on
+grid on
 % close(gcf)
 
 %viobj = close(aviobj)

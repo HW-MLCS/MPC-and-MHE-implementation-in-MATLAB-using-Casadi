@@ -54,7 +54,7 @@ for k = 1:size(xx,2)
     %figure(500)
     ylabel('$y$-position (m)','interpreter','latex','FontSize',fontsize_labels)
     xlabel('$x$-position (m)','interpreter','latex','FontSize',fontsize_labels)
-    axis([-0.2 1.8 -0.2 1.8])
+    axis([-0.2 7 -0.2 7])
     pause(0.1)
     box on;
     grid on

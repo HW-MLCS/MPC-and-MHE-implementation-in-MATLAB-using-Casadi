@@ -13,7 +13,7 @@ h = 0.2; %[s]
 N = 100; % prediction horizon
 rob_diam = 1; % 1(m)
 
-v_max = 0.8; v_min = -v_max;
+v_max = 0.4; v_min = -v_max;
 omega_max = 0.14 * pi; omega_min = -omega_max;
 
 x = SX.sym('x'); y = SX.sym('y'); theta = SX.sym('theta');
@@ -145,9 +145,6 @@ t_factor = t0 / ref_t;
 u_cl = u_cl * t_factor;
 % xx = xx * t_factor;
 t = t / t_factor;
-
-
-
 
 MPC_draw_from_Sim_2 (t,xx,xx1,u_cl,xs,N,rob_diam)
 
